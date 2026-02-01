@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, html { margin: 0; padding: 0; font-family: 'Quicksand', sans-serif; background: #fff; overflow-x: hidden; }
+        
+        /* GOOGLE PAGE */
+        #google-page { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+        .g-logo { width: 270px; margin-bottom: 25px; }
+        .search-box { width: 90%; max-width: 580px; padding: 12px 20px; border: 1px solid #dfe1e5; border-radius: 24px; outline: none; font-size: 16px; margin-bottom: 20px; }
+        .g-btn { background: #f8f9fa; border: 1px solid #f8f9fa; padding: 10px 20px; border-radius: 4px; cursor: pointer; color: #3c4043; font-size: 14px; }
+
+        /* JOURNEY CONTAINER */
+        #journey-container { display: none; background: linear-gradient(135deg,#ffdde1,#ee9ca7); height: 100vh; justify-content: center; align-items: center; }
+        .card { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center; position: relative; }
+        
+        img { width: 100%; max-height: 300px; object-fit: contain; border-radius: 15px; margin: 20px 0; border: 3px solid #ff4d6d; }
+        h1 { color: #ff4d6d; font-size: 24px; margin: 0; }
+        p { color: #555; font-size: 16px; margin: 10px 0; }
+
+        .buttons { display: flex; justify-content: center; gap: 10px; margin-top: 20px; position: relative; height: 60px; }
+        button { padding: 10px 25px; border: none; border-radius: 50px; cursor: pointer; font-size: 16px; background: #ff4d6d; color: white; font-weight: bold; transition: 0.3s; }
+        button:hover { transform: scale(1.05); background: #ff3355; }
+
+        /* NO BUTTON STYLE */
+        #noBtn { background: white; color: #ff4d6d; border: 2px solid #ff4d6d; position: absolute; z-index: 100; }
+    </style>
+</head>
+<body>
+
+    <!-- STAGE 1: THE GOOGLE SEARCH -->
+    <div id="google-page">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" class="g-logo">
+        <input type="text" class="search-box" id="searchInput" placeholder="Search for your surprise...">
+        <div>
+            <button class="g-btn" onclick="startJourney()">Google Search</button>
+            <button class="g-btn" onclick="startJourney()">I'm Feeling Lucky</button>
+        </div>
+    </div>
+
+    <!-- STAGE 2: THE JOURNEY -->
+    <div id="journey-container">
+        <div class="card">
+            <h1 id="title">A Valentine Journey For You</h1>
+            <p id="text">Click below, my lady, and let the tale begin.</p>
+            <img id="mainImage" src="roseday.png">
+            <div class="buttons" id="buttonsArea">
+                <button onclick="nextPage()">Begin 🌹</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let page = 0;
+
+        function startJourney() {
+            document.getElementById('google-page').style.display = 'none';
+            document.getElementById('journey-container').style.display = 'flex';
+        }
+
+        function nextPage() {
+            page++;
+            const title = document.getElementById("title");
+            const text = document.getElementById("text");
+            const img = document.getElementById("mainImage");
+            const buttons = document.getElementById("buttonsArea");
+
+            if(page === 1){
+                title.innerText = "Rose Day 🌹";
+                text.innerText = "Accept this rose as a token of how special you are to me.";
+                img.src = "roseday.png";
+                buttons.innerHTML = `<button onclick="nextPage()">Continue ❤️</button>`;
+            }
+            else if(page === 2){
+                title.innerText = "Propose Day 💍";
+                text.innerText = "Will you stay by my side, today and always?";
+                img.src = "proposeday.gif";
+                buttons.innerHTML = `<button onclick="nextPage()">Yes ❤️</button>`;
+            }
+            else if(page === 3){
+                title.innerText = "Chocolate Day 🍫";
+                text.innerText = "For the sweetness you bring into my life.";
+                img.src = "chocolateday.png";
+                buttons.innerHTML = `<button onclick="nextPage()">Yumm 😋</button>`;
+            }
+            else if(page === 4){
+                title.innerText = "Teddy Day 🧸";
+                text.innerText = "A teddy for when I’m not around to hug you.";
+                img.src = "teddyday.gif";
+                buttons.innerHTML = `<button onclick="nextPage()">Cutee 🧸</button>`;
+            }
+            else if(page === 5){
+                title.innerText = "Promise Day 🤝";
+                text.innerText = "I promise to always be there for you.";
+                img.src = "promiseday.png";
+                buttons.innerHTML = `<button onclick="nextPage()">I trust you ❤️</button>`;
+            }
+            else if(page === 6){
+                title.innerText = "Hug Day 🤗";
+                text.innerText = "Here’s a warm hug just for you.";
+                img.src = "hugday.png";
+                buttons.innerHTML = `<button onclick="nextPage()">Hug back 🤗</button>`;
+            }
+            else if(page === 7){
+                title.innerText = "Kiss Day 😘";
+                text.innerText = "A gentle kiss filled with love.";
+                img.src = "kissday.jpg";
+                buttons.innerHTML = `<button onclick="nextPage()">Blush 😊</button>`;
+            }
+            // VALENTINE DAY - STARTING THE IMAGES
+            else if(page === 8){
+                title.innerText = "Valentine’s Day ❤️";
+                text.innerText = "You are the most beautiful part of my life.";
+                img.src = "valentineday1.jpg";
+                buttons.innerHTML = `<button onclick="nextPage()">More ❤️</button>`;
+            }
+            else if(page === 9){
+                img.src = "valentineday2.jpg";
+                buttons.innerHTML = `<button onclick="nextPage()">More ❤️</button>`;
+            }
+            else if(page === 10){
+                img.src = "valentineday3.jpg";
+                buttons.innerHTML = `<button onclick="nextPage()">The Last One... ❤️</button>`;
+            }
+            else if(page === 11){
+                img.src = "valentineday4.png";
+                title.innerText = "Will you be my Valentine?";
+                text.innerText = "I promise to love you more every day.";
+                // ADDING THE MOVING NO BUTTON HERE
+                buttons.innerHTML = `
+                    <button onclick="nextPage()" style="padding: 10px 40px;">YES! ❤️</button>
+                    <button id="noBtn" onmouseover="moveNo()">No</button>
+                `;
+            }
+            else if(page === 12){
+                title.innerText = "Yay! ❤️ Forever Us";
+                text.innerText = "I knew you'd say yes! I love you so much!";
+                img.src = "proposeday.gif";
+                buttons.innerHTML = `<button onclick="location.reload()">Re-live the Journey 🔁</button>`;
+            }
+        }
+
+        function moveNo() {
+            const btn = document.getElementById('noBtn');
+            // This makes the No button jump to a random spot inside the card
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 150 - 75;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        // Enter key support
+        document.getElementById('searchInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') startJourney();
+        });
+    </script>
+</body>
+</html>
